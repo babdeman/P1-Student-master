@@ -34,6 +34,12 @@ public class CardComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card o1, Card o2) {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 a): remove if implemented
+        if(o1.cardValue() < o2.cardValue()){
+            return -1;
+        }
+        if(o1.cardValue() > o2.cardValue()){
+            return 1;
+        }
+        return Integer.compare(o1.cardColor().ordinal(), o2.cardColor().ordinal());
     }
 }
