@@ -18,6 +18,8 @@ public class CountingComparator<T> implements Comparator<T> {
      */
     private final Comparator<T> delegate;
 
+    int numberOfCounts = 0;
+
     /**
      * Creates a new {@link CountingComparator} that delegates the actual comparison to the given {@link Comparator}.
      * @param delegate the {@link Comparator} that performs the actual comparison.
@@ -30,7 +32,7 @@ public class CountingComparator<T> implements Comparator<T> {
      * Resets the number of comparisons made by the {@link #compare(Object, Object)} method to 0.
      */
     public void reset() {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 b): remove if implemented
+        numberOfCounts = 0;
     }
 
     /**
@@ -44,7 +46,8 @@ public class CountingComparator<T> implements Comparator<T> {
      */
     @Override
     public int compare(T o1, T o2) {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 b): remove if implemented
+        numberOfCounts++;
+        return delegate.compare(o1, o2);
     }
 
     /**
@@ -56,6 +59,6 @@ public class CountingComparator<T> implements Comparator<T> {
      * @return the number of comparisons made.
      */
     public int getComparisonsCount() {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 b): remove if implemented
+        return numberOfCounts;
     }
 }
