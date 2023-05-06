@@ -105,7 +105,15 @@ public class HybridSort<T> implements Sort<T> {
      * @param right The rightmost index of the list to be sorted.
      */
     public void insertionSort(SortList<T> sortList, int left, int right) {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 c): remove if implemented
+        for(int i=left;i<right;i++){
+            T key = sortList.get(i);
+            int j = i-1;
+            while(j > left && comparator.compare(sortList.get(j), key) > 0){
+                sortList.set(i+1, sortList.get(i));
+                j--;
+            }
+            sortList.set(j+1, key);
+        }
     }
 
 }
