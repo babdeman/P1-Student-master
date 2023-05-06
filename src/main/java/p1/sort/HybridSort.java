@@ -83,6 +83,12 @@ public class HybridSort<T> implements Sort<T> {
         }
     }
 
+    private void swap(SortList<T> sortList, int i, int j){
+        T tmp = sortList.get(i);
+        sortList.set(i, sortList.get(j));
+        sortList.set(j, tmp);
+    }
+
     /**
      * Partitions the given {@link SortList} between the given left and right indices (both inclusive).
      * Elements with indices less than left or greater than right will not be altered.
@@ -96,7 +102,23 @@ public class HybridSort<T> implements Sort<T> {
      * and all elements to the right of the index are greater than or equal to the pivot.
      */
     public int partition(SortList<T> sortList, int left, int right) {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 d): remove if implemented
+        int p = 0;
+        T pivot = sortList.get(left);
+        int pl = left - 1;
+        int pr = right + 1;
+        while(pl < pr){
+            do{
+                pl = pl + 1;
+            }while(comparator.compare(sortList.get(pl), pivot) < 0);
+            do{
+                pr = pr - 1;
+            }while(comparator.compare(sortList.get(pr), pivot) > 0);
+            if(pl < pr){
+                swap(sortList, pl, pr);
+            }
+            p = pr;
+        }
+        return p;
     }
 
     /**
