@@ -26,10 +26,22 @@ public class StoneSort<T> implements Sort<T> {
         this.comparator = new CountingComparator<>(comparator);
     }
 
+    public void swap(SortList<T> sortList, int i, int j){
+        T tmp = sortList.get(i);
+        sortList.set(i, sortList.get(j));
+        sortList.set(j, tmp);
+    }
+
     @Override
     public void sort(SortList<T> sortList) {
         comparator.reset();
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H2 a): remove if implemented
+        for(int i=sortList.getSize()-1;i>0;i--){
+            for(int j=0;j<i;j++){
+                if(comparator.compare(sortList.get(j), sortList.get(j+1)) > 0){
+                    swap(sortList, j, j+1);
+                }
+            }
+        }
     }
 
     @Override
