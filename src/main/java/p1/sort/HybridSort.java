@@ -83,7 +83,7 @@ public class HybridSort<T> implements Sort<T> {
         }
     }
 
-    private void swap(SortList<T> sortList, int i, int j){
+    public void swap(SortList<T> sortList, int i, int j){
         T tmp = sortList.get(i);
         sortList.set(i, sortList.get(j));
         sortList.set(j, tmp);
