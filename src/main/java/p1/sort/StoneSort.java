@@ -34,6 +34,16 @@ public class StoneSort<T> implements Sort<T> {
 
     @Override
     public void sort(SortList<T> sortList) {
+        /*
+        comparator.reset();
+        for(int i=sortList.getSize()-1;i>0;i--){
+            for(int j=0;j<i;j++){
+                if(comparator.compare(sortList.get(j), sortList.get(j+1)) > 0){
+                    swap(sortList, j, j+1);
+                }
+            }
+        }
+         */
         comparator.reset();
         for(int i=sortList.getSize()-1;i>0;i--){
             for(int j=0;j<i;j++){
