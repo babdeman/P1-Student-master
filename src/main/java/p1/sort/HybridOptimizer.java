@@ -20,7 +20,7 @@ public class    HybridOptimizer {
      */
     public static <T> int optimize(HybridSort<T> hybridSort, T[] array) {
         ArraySortList<T> arraySortList = new ArraySortList<>(array);
-        int minOperations = array.length ^2 + 1;
+        int minOperations = array.length^2 + 1;
         int bestK = -1;
         for(int i=0;i<array.length;i++){
             hybridSort.setK(i);
