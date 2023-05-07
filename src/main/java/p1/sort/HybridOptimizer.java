@@ -1,11 +1,12 @@
 package p1.sort;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Optimizes the {@link HybridSort} by trying to find the k-value with the lowest number of read and write operations..
  */
-public class HybridOptimizer {
+public class    HybridOptimizer {
 
     /**
      * Optimizes the {@link HybridSort} by trying to find the k-value with the lowest number of read and write operations.
@@ -18,7 +19,18 @@ public class HybridOptimizer {
      * @param <T> the type of the elements to be sorted.
      */
     public static <T> int optimize(HybridSort<T> hybridSort, T[] array) {
-        throw new UnsupportedOperationException("Not implemented yet"); //TODO H1 e): remove if implemented
+        ArraySortList<T> arraySortList = new ArraySortList<>(array);
+        int minOperations = array.length;
+        int bestK = -1;
+        for(int i=0;i<array.length;i++){
+            hybridSort.setK(i);
+            int currentOperations = arraySortList.getReadCount() + arraySortList.getWriteCount();
+            if(currentOperations < minOperations){
+                minOperations = currentOperations;
+                bestK = hybridSort.getK();
+            }
+        }
+        return bestK;
     }
 
 }
